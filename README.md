@@ -9,6 +9,7 @@
  
   ### Links úteis:
    **Informações e download do Dataset**: https://data.cityofnewyork.us/Health/COVID-19-Outcomes-by-Testing-Cohorts-Cases-Hospita/cwmx-mvra
+   
    **Funções embutidas do SparkSQL** : https://sparkbyexamples.com/spark/spark-sql-functions/
    
    
