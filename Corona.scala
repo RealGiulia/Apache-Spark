@@ -32,7 +32,7 @@ object Corona {
 
     //Como desejamos saber qual dia teve o maior número de mortes, vamos fazer as operações necessárias no DataSet.
     val deathsPerDay = ds.select("specimen_date", "Number_deaths")
-    val deaths = deathsPerDay.filter("Number_deaths >  850")
+    val deaths = deathsPerDay.filter("Number_deaths >  800")
     val recordDeaths = deaths.groupBy("specimen_date").max("Number_deaths")
     recordDeaths.show()
 
