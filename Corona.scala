@@ -3,11 +3,13 @@ package com.sundogsoftware.spark
 
 import org.apache.log4j.{Level, Logger}
 import org.apache.spark.sql.SparkSession
+import org.apache.spark.sql.functions.desc
 
 
 object Corona {
 //  Criando um DataSet (é necessário tipar as colunas!).
-  case class numberOfDeathsDay(extract_date: String, specimen_date: String, Number_tested: Int, Number_confirmed: Int, Number_hospitalized: Int, Number_deaths: Int)
+  case class numberOfDeathsDay(extract_date: String, specimen_date: String, Number_tested: Int,
+                               Number_confirmed: Int, Number_hospitalized: Int, Number_deaths: Int)
 
   def main(args: Array[String]) {
 
@@ -31,13 +33,13 @@ object Corona {
       .as[numberOfDeathsDay]
 
     //Como desejamos saber qual dia teve o maior número de mortes, vamos fazer as operações necessárias no DataSet.
-    val deathsPerDay = ds.select("specimen_date", "Number_deaths")
-    val deaths = deathsPerDay.filter("Number_deaths >  800")
-    val recordDeaths = deaths.groupBy("specimen_date").max("Number_deaths")
-    recordDeaths.show()
+    val deathsPerDay = ds.distinct()
+    val deaths = deathsPerDay.select("specimen_date", "extract_date","Number_deaths")
+    val highestNumberDeaths = deaths.orderBy(desc("Number_deaths"))
+    highestNumberDeaths.show()
+
 
     spark.stop()
 
   }
-
 }
