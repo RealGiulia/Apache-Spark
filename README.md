@@ -1,4 +1,4 @@
-# Massive number of deaths due to COVID-19
+# Massive numbers of deaths due to COVID-19
 
 ## Informações:
   Nesse repositório, apresentarei uma maneira de processar um dataset para extrair as datas que registraram números de mortes maiores que 800, utilizando o framework Spark.
